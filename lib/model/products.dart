@@ -1,6 +1,6 @@
-import 'dimensions.dart';
-import 'reviews.dart';
-import 'meta.dart';
+import 'Dimensions.dart';
+import 'Reviews.dart';
+import 'Meta.dart';
 
 /// id : 1
 /// title : "Essence Mascara Lash Princess"
@@ -55,23 +55,11 @@ class Products {
       this.description,
       this.category,
       this.weight,
-      this.availabilityStatus,
-      this.brand,
-      this.dimensions,
-      this.discountPercentage,
-      this.images,
-      this.meta,
-      this.minimumOrderQuantity,
-      this.price,
       this.rating,
-      this.returnPolicy,
-      this.reviews,
-      this.shippingInformation,
-      this.sku,
-      this.stock,
-      this.tags,
-      this.thumbnail,
-      this.warrantyInformation);
+      this.price,
+      this.images,
+      this.discountPercentage,
+      this.thumbnail);
 
   Products.fromJson(dynamic json) {
     id = json['id'];
@@ -98,6 +86,11 @@ class Products {
         reviews?.add(Reviews.fromJson(v));
       });
     }
+    returnPolicy = json['returnPolicy'];
+    minimumOrderQuantity = json['minimumOrderQuantity'];
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+    images = json['images'] != null ? json['images'].cast<String>() : [];
+    thumbnail = json['thumbnail'];
   }
 
   Map<String, dynamic> toJson() {
