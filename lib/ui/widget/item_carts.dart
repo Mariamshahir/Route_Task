@@ -13,6 +13,7 @@ class ItemCarts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.4,
+      width: MediaQuery.of(context).size.width*0.5,
       padding: const EdgeInsets.all(4),
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
@@ -26,18 +27,24 @@ class ItemCarts extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Positioned.fill(
-                  child: CachedNetworkImage(
-                    imageUrl: "${product.images??''}",
-                    fit: BoxFit.cover,
-                    placeholder: (_, __) => const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.blue,
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width*0.25,
+                    height: MediaQuery.of(context).size.height*0.1,
+                    child: CachedNetworkImage(
+                      width: MediaQuery.of(context).size.width*0.50,
+                      height: MediaQuery.of(context).size.height*0.25,
+                      imageUrl: product.thumbnail ?? '',
+                       fit: BoxFit.cover,
+                      placeholder: (_, __) => const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.blue,
+                        ),
                       ),
-                    ),
-                    errorWidget: (_, __, ___) => const Icon(
-                      Icons.image_not_supported_outlined,
-                      color: Colors.red,
+                      errorWidget: (_, __, ___) => const Icon(
+                        Icons.image_not_supported_outlined,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ),
@@ -65,70 +72,62 @@ class ItemCarts extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.title ?? '',
-                    style: AppTheme.text,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+            Text(
+              product.title ?? '',
+              style: AppTheme.text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              product.description ?? '',
+              style: AppTheme.text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Row(
+              children: [
+                Text(
+                  "EGP ${product.discountPercentage ?? ''}",
+                  style: AppTheme.text,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
+                ),
+                Text(
+                  "${product.price ?? ''} EGP",
+                  style: AppTheme.oldPrice,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Review (${product.rating ?? ''})",
+                      style: AppTheme.review,
+                    ),
+                    const SizedBox(width: 4),
+                    const Icon(
+                      Icons.star_outlined,
+                      color: AppColor.starIcon,
+                      size: 20,
+                    ),
+                  ],
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColor.primary,
                   ),
-                  Text(
-                    product.description ?? '',
-                    style: AppTheme.text,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 19,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "EGP ${product.discountPercentage ?? ''}",
-                        style: AppTheme.text,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                      ),
-                      Text(
-                        "${product.price ?? ''} EGP",
-                        style: AppTheme.oldPrice,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Review (${product.rating ?? ''})",
-                            style: AppTheme.review,
-                          ),
-                          const SizedBox(width: 4),
-                          const Icon(
-                            Icons.star_outlined,
-                            color: AppColor.starIcon,
-                            size: 20,
-                          ),
-                        ],
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColor.primary,
-                        ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 19,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
