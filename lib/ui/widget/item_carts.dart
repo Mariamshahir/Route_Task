@@ -28,9 +28,7 @@ class ItemCarts extends StatelessWidget {
               children: [
                 Positioned.fill(
                   child: CachedNetworkImage(
-                    imageUrl: (product.images != null && product.images!.isNotEmpty)
-                        ? product.images!.first
-                        : '',
+                    imageUrl: "${product.images??''}",
                     fit: BoxFit.cover,
                     placeholder: (_, __) => const Center(
                       child: CircularProgressIndicator(
