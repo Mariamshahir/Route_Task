@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               borderSide: const BorderSide(color: AppColor.primary),
             ),
             prefixIcon:
-                const Icon(Icons.search, size: 30, color: AppColor.primary),
+            const Icon(Icons.search, size: 30, color: AppColor.primary),
             hintText: "What do you search for?",
             hintStyle: AppTheme.search,
           ),
