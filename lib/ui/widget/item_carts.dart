@@ -91,7 +91,7 @@ class ItemCarts extends StatelessWidget {
                   style: AppTheme.text,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
+                  width: MediaQuery.of(context).size.width * 0.03,
                 ),
                 Text(
                   "${product.price ?? ''} EGP",

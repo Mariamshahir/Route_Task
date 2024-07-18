@@ -14,7 +14,6 @@ class ProductsCarts extends StatefulWidget {
 
 class _ProductsCartsState extends State<ProductsCarts> {
   late List<Products> allProduct;
-  late List<Products> searchedForCharacters;
 
   @override
   void initState() {
@@ -46,20 +45,24 @@ class _ProductsCartsState extends State<ProductsCarts> {
   }
 
   Widget buildItemCartsLst() {
-    return GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 10),
-        shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
-        padding: EdgeInsets.zero,
-        itemCount: allProduct.length,
-        itemBuilder: (context, index) {
-          return ItemCarts(
-            product: allProduct[index],
-          );
-        });
+    return Column(
+      children: [
+        GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 10),
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemCount: allProduct.length,
+            itemBuilder: (context, index) {
+              return ItemCarts(
+                product: allProduct[index],
+              );
+            }),
+      ],
+    );
   }
 }
