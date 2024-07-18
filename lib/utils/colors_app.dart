@@ -8,5 +8,5 @@ abstract class AppColor {
   static const Color starIcon = Color(0xFFF4B400);
   static const Color shadow = Color(0x99858585);
   static const Color white = Colors.white;
-
+  static const Color search = Color(0x9906004F);
 }

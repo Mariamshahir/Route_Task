@@ -18,4 +18,9 @@ abstract class AppTheme {
     fontWeight: FontWeight.w400,
     color: AppColor.text,
   );
+  static const TextStyle search = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    color: AppColor.search,
+  );
 }
